@@ -36,7 +36,11 @@ function loadData() {
             }
         });
 
-    var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + cityAddress + '&format=json&callback=wikiCallback';
+    var wikiUrl = 'http://en.wfgdgdfikipedia.org/w/api.php?action=opensearch&search=' + cityAddress + '&format=json&callback=wikiCallback';
+
+    var wikiRequestTimeout = setTimeout(function(){
+        $wikiElem.text("Failed to get wikipedia resources");
+    }, 8000);
 
     $.ajax(wikiUrl, {
         dataType: "jsonp",
@@ -49,6 +53,7 @@ function loadData() {
                 var url = 'http://en.wikipedia.org/wiki/' + article;
                 $wikiElem.append('<li><a href="' + url + '">' + article + '</a></li>');
             };
+            clearTimeout(wikiRequestTimeout);
         }
     })
 
