@@ -1,9 +1,7 @@
-
 function loadData() {
     // Get keys
-    var googleKey = config.GOOGLE_KEY;
-    var nyTimesKey = config.NYTIMES_KEY;
-    console.log(googleKey);
+    var googleKey = myKeys.GOOGLE_KEY;
+    var nyTimesKey = myKeys.NYTIMES_KEY;
 
     var $body = $('body');
     var $wikiElem = $('#wikipedia-links');
