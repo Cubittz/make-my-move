@@ -36,6 +36,22 @@ function loadData() {
             }
         });
 
+    var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + cityAddress + '&format=json&callback=wikiCallback';
+
+    $.ajax(wikiUrl, {
+        dataType: "jsonp",
+        // jsonp: "callback"
+        success: function(response) {
+            var articles = response[1];
+
+            for (var i = 0; i < articles.length; i++) {
+                var article = articles[i];
+                var url = 'http://en.wikipedia.org/wiki/' + article;
+                $wikiElem.append('<li><a href="' + url + '">' + article + '</a></li>');
+            };
+        }
+    })
+
     return false;
 };
 
